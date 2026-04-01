@@ -34,30 +34,43 @@ class DetailChatScreen extends StatelessWidget {
       ),
 
       // Body
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              itemCount: messages.length,
-              itemBuilder: (context, index) {
-                final message = messages[index];
-                final isMe = message['isMe'];
-
-                return Align(
-                  alignment: isMe
-                      ? Alignment.centerRight
-                      : Alignment.centerLeft,
-                  child: MessageBubble(isMe: isMe, message: message),
-                );
-              },
-            ),
+      body: Container(
+        // Wallpaper Chat
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/chat_wallpaper.jpg'),
+            fit: BoxFit.cover,
+            opacity: 0.5, // Atur transparansi wallpaper (0.0 - 1.0)
           ),
+        ),
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 8,
+                ),
+                itemCount: messages.length,
+                itemBuilder: (context, index) {
+                  final message = messages[index];
+                  final isMe = message['isMe'];
 
-          // Input Area
-          ChatInputField(),
-          const SizedBox(height: 8), // Bottom safe area spacing
-        ],
+                  return Align(
+                    alignment: isMe
+                        ? Alignment.centerRight
+                        : Alignment.centerLeft,
+                    child: MessageBubble(isMe: isMe, message: message),
+                  );
+                },
+              ),
+            ),
+
+            // Input Area
+            ChatInputField(),
+            const SizedBox(height: 8),
+          ],
+        ),
       ),
     );
   }
