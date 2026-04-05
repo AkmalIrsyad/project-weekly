@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:whatsapp/screens/calls_screen.dart';
-import 'package:whatsapp/screens/chats_screen.dart';
+import 'package:whatsapp/screens/chat/chat_provider.dart';
+import 'package:whatsapp/screens/chat/chat_screen.dart';
 import 'package:whatsapp/screens/comunities_screen.dart';
 import 'package:whatsapp/screens/updates_screen.dart';
 import 'package:whatsapp/utils/color.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => ChatProvider())
+        ],
+      child: const MyApp(),
+    )
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -63,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
           });
         },
         children: [
-          ChatsScreen(),
+          ChatScreen(),
           UpdatesScreen(),
           ComunitiesScreen(),
           CallsScreen(),
