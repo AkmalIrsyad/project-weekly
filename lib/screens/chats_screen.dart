@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp/data/message.dart';
 import 'package:whatsapp/screens/detail_chat_screen.dart';
 import 'package:whatsapp/utils/color.dart';
 import 'package:whatsapp/utils/time.dart';
@@ -102,14 +101,16 @@ class _ChatsScreenState extends State<ChatsScreen> {
                             width: 1.5,
                           ),
                         ),
-                        child: Text(
-                          filter,
-                          style: TextStyle(
-                            fontSize: 13,
-                            fontWeight: isSelected
-                                ? FontWeight.w600
-                                : FontWeight.w400,
-                            color: isSelected ? Colors.green : Colors.black54,
+                        child: Center(
+                          child: Text(
+                            filter,
+                            style: TextStyle(
+                              fontSize: 13,
+                              fontWeight: isSelected
+                                  ? FontWeight.w600
+                                  : FontWeight.w400,
+                              color: isSelected ? Colors.green : Colors.black54,
+                            ),
                           ),
                         ),
                       ),
