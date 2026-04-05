@@ -9,7 +9,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
   cupertino_icons: ^1.0.8
+  intl: # lib buat date format
 
 dev_dependencies:
   flutter_test:
