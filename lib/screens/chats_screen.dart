@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp/data/message.dart';
 import 'package:whatsapp/screens/detail_chat_screen.dart';
 import 'package:whatsapp/utils/color.dart';
+import 'package:whatsapp/utils/time.dart';
+
+import '../data/enum/message_status.dart';
+import '../data/local_chat_data_provider.dart';
 
 class ChatsScreen extends StatefulWidget {
   const ChatsScreen({super.key});
@@ -120,21 +124,50 @@ class _ChatsScreenState extends State<ChatsScreen> {
 
       // Body
       body: ListView.builder(
-        itemCount: dummyChats.length,
+        itemCount: LocalChatDataProvider.messages.length,
         itemBuilder: (context, index) {
-          final message = dummyChats[index];
+          final chat = LocalChatDataProvider.messages[index];
+
           return ListTile(
+            // title
             title: Text(
-              message['name']!,
+              chat.name,
               style: TextStyle(fontWeight: FontWeight.w600),
             ),
-            subtitle: Text(message['message']!),
+
+            // subTitle
+            subtitle: Builder(builder: (ctx) {
+
+              // Kalo pengirimnya kita, ubag layoutnya, kasih status pengiriman
+              if (chat.isMe) {
+                return Row(
+                  children: [
+                    switch (chat.status) {
+                      MessageStatus.pending => const Icon(Icons.access_time_rounded, size: 16, color: Colors.grey),
+                      MessageStatus.sent => const Icon(Icons.done, size: 16, color: Colors.grey),
+                      MessageStatus.delivered => const Icon(Icons.done_all, size: 16, color: Colors.grey),
+                      MessageStatus.read => const Icon(Icons.done_all, size: 16, color: Colors.blue),
+                    },
+                    const SizedBox(width: 4),
+                    Text(chat.message)
+                  ],
+                );
+              }
+
+              return Text(chat.message);
+            }),
+
+            // leading
             leading: CircleAvatar(
               backgroundImage: NetworkImage(
                 'https://api.dicebear.com/7.x/personas/png?seed=$index',
               ),
             ),
-            trailing: Text(message['time']!),
+
+            // trailing
+            trailing: Text(formatTime(chat.timeInMillis)),
+
+            // onTap
             onTap: () {
               Navigator.push(
                 context,
