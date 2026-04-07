@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp/data/model/channel_model.dart';
 
 class UpdatesSectionHeader extends StatelessWidget {
   final String title;
@@ -30,30 +29,36 @@ class UpdatesSectionHeader extends StatelessWidget {
 }
 
 class ChannelTile extends StatelessWidget {
-  final ChannelModel channel;
+  final String name;
+  final String seed;
+  final String followers;
+  final bool verified;
 
-  const ChannelTile({super.key, required this.channel});
+  const ChannelTile({
+    super.key,
+    required this.name,
+    required this.seed,
+    required this.followers,
+    required this.verified,
+  });
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       leading: CircleAvatar(
         backgroundImage: NetworkImage(
-          'https://api.dicebear.com/7.x/personas/png?seed=${channel.seed}',
+          'https://api.dicebear.com/7.x/personas/png?seed=$seed',
         ),
       ),
       title: Row(
         spacing: 4,
         children: [
-          Text(
-            channel.name,
-            style: const TextStyle(fontWeight: FontWeight.w600),
-          ),
-          if (channel.verified)
+          Text(name, style: const TextStyle(fontWeight: FontWeight.w600)),
+          if (verified)
             const Icon(Icons.verified, color: Colors.blue, size: 16),
         ],
       ),
-      subtitle: Text('${channel.followers} followers'),
+      subtitle: Text('$followers followers'),
       trailing: OutlinedButton(
         onPressed: () {},
         style: OutlinedButton.styleFrom(
