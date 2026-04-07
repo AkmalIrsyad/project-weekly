@@ -15,24 +15,26 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-
-
-
   @override
   Widget build(BuildContext context) {
     return Consumer<ChatProvider>(
       builder: (ctx, provider, child) {
-
         return Scaffold(
           // AppBar
           appBar: AppBar(
             title: Text(
               'WhatsApp',
-              style: TextStyle(fontWeight: FontWeight.w600, color: Colors.green),
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                color: Colors.green,
+              ),
             ),
             centerTitle: false,
             actions: [
-              IconButton(onPressed: () {}, icon: Icon(Icons.camera_alt_outlined)),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.camera_alt_outlined),
+              ),
               IconButton(onPressed: () {}, icon: Icon(Icons.more_vert)),
             ],
 
@@ -73,7 +75,10 @@ class _ChatScreenState extends State<ChatScreen> {
                     height: 45,
                     child: ListView.separated(
                       scrollDirection: Axis.horizontal,
-                      padding: EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 14,
+                        vertical: 6,
+                      ),
                       itemCount: provider.filters.length,
                       separatorBuilder: (_, __) => SizedBox(width: 8),
                       itemBuilder: (context, index) {
@@ -110,7 +115,9 @@ class _ChatScreenState extends State<ChatScreen> {
                                   fontWeight: isSelected
                                       ? FontWeight.w600
                                       : FontWeight.w400,
-                                  color: isSelected ? Colors.green : Colors.black54,
+                                  color: isSelected
+                                      ? Colors.green
+                                      : Colors.black54,
                                 ),
                               ),
                             ),
@@ -138,26 +145,43 @@ class _ChatScreenState extends State<ChatScreen> {
                 ),
 
                 // subTitle
-                subtitle: Builder(builder: (ctx) {
+                subtitle: Builder(
+                  builder: (ctx) {
+                    // Kalo pengirimnya kita, ubag layoutnya, kasih status pengiriman
+                    if (chat.isMe) {
+                      return Row(
+                        children: [
+                          switch (chat.status) {
+                            MessageStatus.pending => const Icon(
+                              Icons.access_time_rounded,
+                              size: 16,
+                              color: Colors.grey,
+                            ),
+                            MessageStatus.sent => const Icon(
+                              Icons.done,
+                              size: 16,
+                              color: Colors.grey,
+                            ),
+                            MessageStatus.delivered => const Icon(
+                              Icons.done_all,
+                              size: 16,
+                              color: Colors.grey,
+                            ),
+                            MessageStatus.read => const Icon(
+                              Icons.done_all,
+                              size: 16,
+                              color: Colors.blue,
+                            ),
+                          },
+                          const SizedBox(width: 4),
+                          Text(chat.message),
+                        ],
+                      );
+                    }
 
-                  // Kalo pengirimnya kita, ubag layoutnya, kasih status pengiriman
-                  if (chat.isMe) {
-                    return Row(
-                      children: [
-                        switch (chat.status) {
-                          MessageStatus.pending => const Icon(Icons.access_time_rounded, size: 16, color: Colors.grey),
-                          MessageStatus.sent => const Icon(Icons.done, size: 16, color: Colors.grey),
-                          MessageStatus.delivered => const Icon(Icons.done_all, size: 16, color: Colors.grey),
-                          MessageStatus.read => const Icon(Icons.done_all, size: 16, color: Colors.blue),
-                        },
-                        const SizedBox(width: 4),
-                        Text(chat.message)
-                      ],
-                    );
-                  }
-
-                  return Text(chat.message);
-                }),
+                    return Text(chat.message);
+                  },
+                ),
 
                 // leading
                 leading: CircleAvatar(
@@ -176,10 +200,12 @@ class _ChatScreenState extends State<ChatScreen> {
                       width: 16,
                       height: 16,
                       decoration: BoxDecoration(
-                        color: chat.isMe || chat.status == MessageStatus.read ? Colors.transparent : Colors.green,
+                        color: chat.isMe || chat.status == MessageStatus.read
+                            ? Colors.transparent
+                            : Colors.green,
                         shape: BoxShape.circle,
                       ),
-                    )
+                    ),
                   ],
                 ),
 

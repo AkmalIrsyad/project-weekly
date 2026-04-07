@@ -10,11 +10,9 @@ import 'package:whatsapp/utils/color.dart';
 void main() {
   runApp(
     MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (_) => ChatProvider())
-        ],
+      providers: [ChangeNotifierProvider(create: (_) => ChatProvider())],
       child: const MyApp(),
-    )
+    ),
   );
 }
 
