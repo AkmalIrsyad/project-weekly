@@ -2,8 +2,8 @@ import '../enum/message_status.dart';
 
 class Chat {
 
-  int id; // ID untuk bubble chat
-  int chatID; // ID percakapan (grup/personal)
+  double id; // ID untuk bubble chat
+  double chatID; // ID percakapan (grup/personal)
   String name;
   String message;
   int timeInMillis;

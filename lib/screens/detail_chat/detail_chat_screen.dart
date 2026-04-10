@@ -9,7 +9,7 @@ import 'detail_chat_provider.dart';
 class DetailChatScreen extends StatefulWidget {
   const DetailChatScreen({super.key, required this.chatID});
 
-  final int chatID;
+  final double chatID;
 
   @override
   State createState() => _DetailChatScreenState();
@@ -58,6 +58,7 @@ class _DetailChatScreenState extends State<DetailChatScreen> {
             children: [
               Expanded(
                 child: ListView.builder(
+                  controller: provider.scrollController,
                   padding: const EdgeInsets.symmetric(
                     horizontal: 16,
                     vertical: 8,
@@ -77,7 +78,11 @@ class _DetailChatScreenState extends State<DetailChatScreen> {
               ),
 
               // Input Area
-              ChatInputField(),
+              ChatInputField(
+                onSubmit: (message) {
+                  provider.send(message);
+                },
+              ),
               const SizedBox(height: 8),
             ],
           ),
