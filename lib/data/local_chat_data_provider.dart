@@ -4,6 +4,8 @@ import 'package:whatsapp/data/model/chat.dart';
 class LocalChatDataProvider {
   static List<Chat> messages = [
     Chat(
+      id: 0,
+      chatID: 0,
       name: "宝贝",
       message: "bǎobèi gy cakti y? 🥺 <3 <3 <3",
       timeInMillis: 1775101234000,
@@ -11,6 +13,8 @@ class LocalChatDataProvider {
       status: MessageStatus.sent,
     ),
     Chat(
+      id: 0,
+      chatID: 1,
       name: "Andi",
       message: "Cen, tugas udah belum?",
       timeInMillis: 1775123456000,
@@ -18,6 +22,8 @@ class LocalChatDataProvider {
       status: MessageStatus.delivered,
     ),
     Chat(
+      id: 0,
+      chatID: 2,
       name: "Yeye",
       message: "lagi di jalan hehe",
       timeInMillis: 1775156789000,
@@ -25,6 +31,8 @@ class LocalChatDataProvider {
       status: MessageStatus.read,
     ),
     Chat(
+      id: 0,
+      chatID: 3,
       name: "Ruikee",
       message: "nanti jadi kan meeting?",
       timeInMillis: 1775200001000,
@@ -32,6 +40,8 @@ class LocalChatDataProvider {
       status: MessageStatus.read,
     ),
     Chat(
+      id: 0,
+      chatID: 4,
       name: "Budi",
       message: "gw kirim filenya ya",
       timeInMillis: 1775234567000,
@@ -39,6 +49,8 @@ class LocalChatDataProvider {
       status: MessageStatus.sent,
     ),
     Chat(
+      id: 0,
+      chatID: 5,
       name: "Tiwei",
       message: "iyaa sabar dong akh",
       timeInMillis: 1775259999000,
@@ -46,6 +58,8 @@ class LocalChatDataProvider {
       status: MessageStatus.read,
     ),
     Chat(
+      id: 0,
+      chatID: 6,
       name: "Kevin",
       message: "malam ini mabar ga?",
       timeInMillis: 1775281234000,
@@ -53,6 +67,8 @@ class LocalChatDataProvider {
       status: MessageStatus.delivered,
     ),
     Chat(
+      id: 0,
+      chatID: 7,
       name: "Rina",
       message: "aku udah sampe nih",
       timeInMillis: 1775298765000,
@@ -60,6 +76,8 @@ class LocalChatDataProvider {
       status: MessageStatus.read,
     ),
     Chat(
+      id: 0,
+      chatID: 8,
       name: "Mono",
       message: "mauuu aku laper banget 😭",
       timeInMillis: 1775312345000,
@@ -67,6 +85,8 @@ class LocalChatDataProvider {
       status: MessageStatus.read,
     ),
     Chat(
+      id: 0,
+      chatID: 9,
       name: "Dika",
       message: "link zoom mana ya?",
       timeInMillis: 1775329999000,
@@ -74,6 +94,8 @@ class LocalChatDataProvider {
       status: MessageStatus.sent,
     ),
     Chat(
+      id: 0,
+      chatID: 10,
       name: "Lina",
       message: "besok jangan lupa yaa",
       timeInMillis: 1775338888000,
@@ -81,6 +103,8 @@ class LocalChatDataProvider {
       status: MessageStatus.delivered,
     ),
     Chat(
+      id: 0,
+      chatID: 11,
       name: "Siti",
       message: "hehe tapi lucu kan?",
       timeInMillis: 1775346000000,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:whatsapp/screens/chat/chat_provider.dart';
-import 'package:whatsapp/screens/detail_chat_screen.dart';
+import 'package:whatsapp/screens/detail_chat/detail_chat_screen.dart';
 import 'package:whatsapp/utils/color.dart';
 import 'package:whatsapp/utils/time.dart';
 
@@ -213,7 +213,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => DetailChatScreen()),
+                    MaterialPageRoute(builder: (context) => DetailChatScreen(chatID: chat.chatID)),
                   );
                 },
               );
@@ -251,7 +251,7 @@ class _ChatScreenState extends State<ChatScreen> {
   void initState() {
     super.initState();
 
-    // Load chat setelah frame pertama di render
+    // Load chat/kontak setelah frame pertama di render
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<ChatProvider>().loadChats();
     });

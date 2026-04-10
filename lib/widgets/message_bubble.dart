@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp/data/model/chat.dart';
 import 'package:whatsapp/utils/color.dart';
+import 'package:whatsapp/utils/time.dart';
 
 class MessageBubble extends StatelessWidget {
-  const MessageBubble({super.key, required this.isMe, required this.message});
+  const MessageBubble({super.key, required this.chat});
 
-  final dynamic isMe;
-  final Map<String, dynamic> message;
+  final Chat chat;
 
   @override
   Widget build(BuildContext context) {
@@ -13,12 +14,12 @@ class MessageBubble extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 4),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: isMe ? AppColors.teaGreen : Colors.white,
+        color: chat.isMe ? AppColors.teaGreen : Colors.white,
         borderRadius: BorderRadius.only(
           topLeft: const Radius.circular(12),
           topRight: const Radius.circular(12),
-          bottomLeft: isMe ? const Radius.circular(12) : Radius.zero,
-          bottomRight: isMe ? Radius.zero : const Radius.circular(12),
+          bottomLeft: chat.isMe ? const Radius.circular(12) : Radius.zero,
+          bottomRight: chat.isMe ? Radius.zero : const Radius.circular(12),
         ),
         boxShadow: [
           BoxShadow(
@@ -34,16 +35,16 @@ class MessageBubble extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Text(message['text'], style: const TextStyle(fontSize: 16)),
+          Text(chat.message, style: const TextStyle(fontSize: 16)),
           const SizedBox(height: 4),
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                message['time'],
+                formatTime(chat.timeInMillis),
                 style: TextStyle(fontSize: 11, color: Colors.grey[600]),
               ),
-              if (isMe) ...[
+              if (chat.isMe) ...[
                 const SizedBox(width: 4),
                 const Icon(Icons.done_all, size: 16, color: AppColors.blue),
               ],
