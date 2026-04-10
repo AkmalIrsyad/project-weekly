@@ -1,35 +1,8 @@
-final List<Map<String, String>> dummyChats = [
-  {"name": "Joko", "message": "Halo, sudah makan belum?", "time": "07.10"},
-  {"name": "Budi", "message": "Besok jadi kan?", "time": "08.22"},
-  {"name": "Asep", "message": "Lagi dimana nih?", "time": "09.15"},
-  {"name": "Dono", "message": "Oke siap!", "time": "10.01"},
-  {"name": "Darto", "message": "Sip mantap!", "time": "11.30"},
-  {"name": "Slamet", "message": "Nanti kabari ya.", "time": "12.44"},
-  {"name": "Wagiman", "message": "Masih lama?", "time": "13.27"},
-  {"name": "Cipto", "message": "Bisa ketemu sekarang?", "time": "14.02"},
-  {"name": "Suripto", "message": "Gaskeun!", "time": "15.09"},
-  {"name": "Samsul", "message": "Otw bos!", "time": "16.33"},
-  {"name": "Karto", "message": "Siap hadir.", "time": "17.21"},
-  {"name": "Bejo", "message": "Wkwk lucu juga.", "time": "18.12"},
-  {"name": "Warto", "message": "Nanti aku cek dulu.", "time": "18.55"},
-  {"name": "Paijo", "message": "Santai aja bro.", "time": "19.40"},
-  {"name": "Paidi", "message": "Fix ya!", "time": "20.11"},
-  {"name": "Jumadi", "message": "Oke bisa.", "time": "20.45"},
-  {"name": "Suro", "message": "Gaspol!", "time": "21.10"},
-  {"name": "Poniman", "message": "Lagi sibuk nih.", "time": "21.55"},
-  {"name": "Mulyono", "message": "Besok aku bantu.", "time": "22.13"},
-  {"name": "Sumanto", "message": "Oke mantap.", "time": "22.47"},
-];
-
 final List<Map<String, dynamic>> messages = [
   {"isMe": false, "text": "Halo, apa kabar?", "time": "10:00"},
   {"isMe": true, "text": "Halo! Kabar baik. Kamu gimana?", "time": "10:01"},
   {"isMe": false, "text": "Baik juga. Jadi pergi nanti?", "time": "10:02"},
   {"isMe": true, "text": "Jadi dong, jam berapa?", "time": "10:03"},
-  {
-    "isMe": false,
-    "text": "Jam 7 malam ya di tempat biasa",
-    "time": "10:05",
-  },
+  {"isMe": false, "text": "Jam 7 malam ya di tempat biasa", "time": "10:05"},
   {"isMe": true, "text": "Oke siap!", "time": "10:06"},
 ];

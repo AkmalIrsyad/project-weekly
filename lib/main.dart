@@ -4,17 +4,19 @@ import 'package:whatsapp/screens/calls_screen.dart';
 import 'package:whatsapp/screens/chat/chat_provider.dart';
 import 'package:whatsapp/screens/chat/chat_screen.dart';
 import 'package:whatsapp/screens/comunities_screen.dart';
+import 'package:whatsapp/screens/detail_chat/detail_chat_provider.dart';
 import 'package:whatsapp/screens/updates_screen.dart';
 import 'package:whatsapp/utils/color.dart';
 
 void main() {
   runApp(
     MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (_) => ChatProvider())
-        ],
+      providers: [
+        ChangeNotifierProvider(create: (_) => ChatProvider()),
+        ChangeNotifierProvider(create: (_) => DetailChatProvider())
+      ],
       child: const MyApp(),
-    )
+    ),
   );
 }
 
